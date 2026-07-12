@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 const adminNavItems = [
-  { title: "Dashboard", url: "/admin", icon: "dashboard" },
+  { title: "Dashboard", url: "/admin/dashboard", icon: "dashboard" },
   { title: "Students", url: "/admin/students", icon: "school" },
   { title: "Enrollments", url: "/admin/enrollments", icon: "person_add" },
   { title: "Courses", url: "/admin/courses", icon: "menu_book" },
@@ -43,7 +43,7 @@ export function AppSidebar() {
         </div>
         <nav className="flex flex-col gap-1 px-3">
           {adminNavItems.map((item) => {
-            const isActive = pathname === item.url || (item.url !== '/admin' && pathname.startsWith(item.url));
+            const isActive = pathname === item.url || pathname.startsWith(item.url + "/");
             
             return (
               <Link
@@ -57,7 +57,7 @@ export function AppSidebar() {
               >
                 <span
                   className="material-symbols-outlined text-[20px]"
-                  style={item.weightFill && isActive ? { fontVariationSettings: "'FILL' 1" } : {}}
+                  style={isActive ? { fontVariationSettings: "'FILL' 1" } : {}}
                 >
                   {item.icon}
                 </span>

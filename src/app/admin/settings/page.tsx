@@ -106,8 +106,8 @@ export default function SettingsPage() {
                   <div className="relative">
                     <select className="w-full h-[40px] px-3 pr-10 rounded-lg border border-border bg-surface-container-lowest text-on-surface focus:border-primary-container focus:ring-1 focus:ring-primary-container outline-none transition-shadow font-body-md appearance-none">
                       <option>USD ($)</option>
+                      <option>INR (₹)</option>
                       <option>EUR (€)</option>
-                      <option>GBP (£)</option>
                     </select>
                     <span className="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-secondary pointer-events-none">expand_more</span>
                   </div>

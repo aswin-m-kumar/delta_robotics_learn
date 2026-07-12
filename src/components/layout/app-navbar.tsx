@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 export function AppNavbar() {
   const pathname = usePathname();
-  const pageName = pathname === "/admin" 
-    ? "Dashboard" 
+  const pageName = pathname === "/admin/dashboard"
+    ? "Dashboard"
     : pathname.split("/").pop()?.replace(/-/g, " ") || "";
 
   // Make action button context specific based on page if needed,
