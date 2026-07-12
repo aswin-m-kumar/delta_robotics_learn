@@ -26,11 +26,10 @@ export function AppSidebar() {
     <aside className="hidden md:flex w-[260px] h-screen sticky top-0 left-0 border-r border-border bg-bg-alt flex-col justify-between py-6 shrink-0 z-50">
       <div>
         <div className="px-6 mb-8 flex items-center gap-3">
-          {/* We use standard img for external url to avoid next.config domain issue */}
           <img
             alt="Delta Robotics Logo"
             className="w-8 h-8 object-contain"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFgi1o0mpD_MjfvzR_PSrBCvpdVuNJYImk-aTvsJrWZYAT1eDsBvp6sBfxeyesITtxUu93Cogx62xa5jxNpS6fb00Wu8MGfoJ1fXFTRNH-_J1hUtqkROcm0pOuPVVjpJz1AKnt5QlxuQGhuKFLe8N-1mYuN-yD7rt6hDEm2BVouDQRsK6-s5TDjuVkz_qnYJFLa8rGhZM34cGqst7JrXWdZEvUAUvy-xOz7_x55yx7xxngrEfD_AKjW7QbnLhyb6o8yQ"
+            src="/logo-32.png"
           />
           <div>
             <h1 className="font-headline-sm text-headline-sm font-bold text-on-surface uppercase tracking-tight">

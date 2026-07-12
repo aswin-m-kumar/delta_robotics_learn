@@ -1,0 +1,76 @@
+"use client";
+
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const studentNavItems = [
+  { title: "Overview", url: "/student/dashboard", icon: "dashboard" },
+  { title: "Curriculum", url: "/student/curriculum", icon: "menu_book" },
+  { title: "Hardware Kit", url: "/student/hardware", icon: "precision_manufacturing" },
+  { title: "Simulations", url: "/student/simulations", icon: "model_training" },
+  { title: "Resources", url: "/student/resources", icon: "folder_open" },
+];
+
+export function StudentSidebar() {
+  const pathname = usePathname();
+
+  return (
+    <aside className="hidden md:flex w-64 h-screen fixed left-0 top-0 flex-col justify-between py-6 z-40 bg-surface-container-low dark:bg-surface-container">
+      <div>
+        <div className="px-6 mb-12">
+          <div className="flex items-center gap-3 mb-2">
+            <img src="/logo-32.png" alt="Delta Robotics" className="w-8 h-8 object-contain" />
+            <div className="font-headline-md text-headline-md font-bold text-primary-container">Delta Robotics</div>
+          </div>
+          <div className="font-body-md text-body-md text-secondary">Intro to ROS 2</div>
+          <div className="font-body-md text-body-md text-on-surface-variant text-xs mt-1">Module 3: Motion Control</div>
+        </div>
+        <nav className="px-3 flex flex-col gap-1">
+          {studentNavItems.map((item) => {
+            const isActive = pathname === item.url || pathname.startsWith(item.url + "/");
+
+            return (
+              <Link
+                key={item.title}
+                href={item.url}
+                className={`flex items-center gap-3 mx-2 p-3 rounded-lg transition-transform duration-150 active:translate-x-1 ${
+                  isActive
+                    ? "bg-primary-container text-on-primary-container font-bold"
+                    : "text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed-variant"
+                }`}
+              >
+                <span
+                  className="material-symbols-outlined"
+                  style={isActive ? { fontVariationSettings: "'FILL' 1" } : {}}
+                >
+                  {item.icon}
+                </span>
+                {item.title}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
+      <div className="px-3 flex flex-col gap-1">
+        <button className="bg-primary-container text-on-primary font-bold rounded-lg mx-2 p-3 mb-6 hover:bg-primary transition-colors">
+          Join Live Lab
+        </button>
+        <Link
+          href="#"
+          className="flex items-center gap-3 mx-2 p-3 rounded-lg text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-transform duration-150 active:translate-x-1"
+        >
+          <span className="material-symbols-outlined">help</span>
+          Help
+        </Link>
+        <Link
+          href="#"
+          className="flex items-center gap-3 mx-2 p-3 rounded-lg text-on-surface-variant hover:bg-primary-fixed hover:text-on-primary-fixed-variant transition-transform duration-150 active:translate-x-1"
+        >
+          <span className="material-symbols-outlined">settings</span>
+          Settings
+        </Link>
+      </div>
+    </aside>
+  );
+}
