@@ -15,7 +15,7 @@ const studentNavItems = [
 export function StudentSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   return (
     <aside className="hidden md:flex w-[260px] h-screen sticky top-0 left-0 border-r border-border bg-bg-alt flex-col justify-between py-6 shrink-0 z-50">
@@ -76,7 +76,7 @@ export function StudentSidebar() {
           >
             account_circle
           </span>
-          Profile
+          {user?.name || user?.email || "Profile"}
         </Link>
         <button
           onClick={async () => { await logout(); router.push("/login"); }}

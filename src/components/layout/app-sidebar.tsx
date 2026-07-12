@@ -23,7 +23,7 @@ const adminNavItems = [
 export function AppSidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
 
   return (
     <aside className="hidden md:flex w-[260px] h-screen sticky top-0 left-0 border-r border-border bg-bg-alt flex-col justify-between py-6 shrink-0 z-50">
@@ -77,7 +77,7 @@ export function AppSidebar() {
           <span className="material-symbols-outlined text-[20px]">
             account_circle
           </span>
-          User Profile
+          {user?.name || user?.email || "User Profile"}
         </Link>
         <button
           onClick={async () => { await logout(); router.push("/login"); }}

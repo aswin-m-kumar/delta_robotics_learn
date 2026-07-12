@@ -7,12 +7,12 @@ export default function InternLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen">
+    <div className="flex h-screen overflow-hidden bg-surface-container-lowest text-on-surface font-body-md w-full">
       <InternSidebar />
-      <div className="flex-1 flex flex-col md:ml-64">
+      <main className="flex-1 flex flex-col h-screen overflow-hidden">
         <InternNavbar />
         {children}
-      </div>
+      </main>
     </div>
   );
 }
