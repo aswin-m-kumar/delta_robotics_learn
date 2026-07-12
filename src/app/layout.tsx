@@ -42,7 +42,7 @@ export default function RootLayout({
           }
         `}</style>
       </head>
-      <body className="min-h-full flex flex-col bg-surface-container-lowest text-on-surface font-body-md overflow-hidden">
+      <body className="min-h-full flex flex-col bg-surface-container-lowest text-on-surface font-body-md">
         <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>

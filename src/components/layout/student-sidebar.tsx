@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 
 const studentNavItems = [
   { title: "Overview", url: "/student/dashboard", icon: "dashboard" },
-  { title: "Curriculum", url: "/student/curriculum", icon: "menu_book" },
+  { title: "Curriculum", url: "/student/courses", icon: "menu_book" },
   { title: "Hardware Kit", url: "/student/hardware", icon: "precision_manufacturing" },
   { title: "Simulations", url: "/student/simulations", icon: "model_training" },
   { title: "Resources", url: "/student/resources", icon: "folder_open" },
