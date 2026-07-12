@@ -11,6 +11,14 @@ import type {
   Announcement,
   Enrollment,
   CourseCreateRequest,
+  InventoryItem,
+  InventoryLog,
+  InventoryCreateRequest,
+  Workshop,
+  WorkshopCreateRequest,
+  WorkshopRegistration,
+  GalleryImage,
+  GalleryCreateRequest,
 } from "./types";
 
 const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api").replace(/\/+$/, "");
@@ -288,6 +296,157 @@ export const api = {
 
     myEnrollments() {
       return request<Enrollment[]>("/my-enrollments/", { auth: true });
+    },
+  },
+
+  inventory: {
+    list() {
+      return request<InventoryItem[]>("/inventory/", { auth: true });
+    },
+
+    get(id: string) {
+      return request<InventoryItem>(`/inventory/${id}/`, { auth: true });
+    },
+
+    create(data: InventoryCreateRequest) {
+      return request<InventoryItem>("/inventory/", {
+        method: "POST",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    update(id: string, data: InventoryCreateRequest) {
+      return request<InventoryItem>(`/inventory/${id}/`, {
+        method: "PUT",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    patch(id: string, data: Partial<InventoryCreateRequest & { quantity: number }>) {
+      return request<InventoryItem>(`/inventory/${id}/`, {
+        method: "PATCH",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    delete(id: string) {
+      return request<void>(`/inventory/${id}/`, {
+        method: "DELETE",
+        auth: true,
+      });
+    },
+  },
+
+  inventoryLogs: {
+    list() {
+      return request<InventoryLog[]>("/inventory-logs/", { auth: true });
+    },
+
+    get(id: string) {
+      return request<InventoryLog>(`/inventory-logs/${id}/`, { auth: true });
+    },
+  },
+
+  workshops: {
+    list() {
+      return request<Workshop[]>("/workshops/", { auth: true });
+    },
+
+    get(id: string) {
+      return request<Workshop>(`/workshops/${id}/`, { auth: true });
+    },
+
+    create(data: WorkshopCreateRequest) {
+      return request<Workshop>("/workshops/", {
+        method: "POST",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    update(id: string, data: WorkshopCreateRequest) {
+      return request<Workshop>(`/workshops/${id}/`, {
+        method: "PUT",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    patch(id: string, data: Partial<WorkshopCreateRequest>) {
+      return request<Workshop>(`/workshops/${id}/`, {
+        method: "PATCH",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    delete(id: string) {
+      return request<void>(`/workshops/${id}/`, {
+        method: "DELETE",
+        auth: true,
+      });
+    },
+
+    registrations(id: string) {
+      return request<WorkshopRegistration[]>(`/workshops/${id}/registrations/`, { auth: true });
+    },
+  },
+
+  gallery: {
+    list() {
+      return request<GalleryImage[]>("/gallery/", { auth: true });
+    },
+
+    get(id: string) {
+      return request<GalleryImage>(`/gallery/${id}/`, { auth: true });
+    },
+
+    create(data: GalleryCreateRequest) {
+      return request<GalleryImage>("/gallery/", {
+        method: "POST",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    update(id: string, data: GalleryCreateRequest) {
+      return request<GalleryImage>(`/gallery/${id}/`, {
+        method: "PUT",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    patch(id: string, data: Partial<GalleryCreateRequest>) {
+      return request<GalleryImage>(`/gallery/${id}/`, {
+        method: "PATCH",
+        auth: true,
+        body: JSON.stringify(data),
+      });
+    },
+
+    delete(id: string) {
+      return request<void>(`/gallery/${id}/`, {
+        method: "DELETE",
+        auth: true,
+      });
+    },
+  },
+
+  workshopRegistrations: {
+    register(workshopId: string) {
+      return request<WorkshopRegistration>("/workshop-registrations/", {
+        method: "POST",
+        auth: true,
+        body: JSON.stringify({ workshop: workshopId }),
+      });
+    },
+
+    myRegistrations() {
+      return request<WorkshopRegistration[]>("/workshop-registrations/", { auth: true });
     },
   },
 };
