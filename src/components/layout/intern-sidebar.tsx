@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useAuth } from "@/lib/auth-context";
 
 const internNavItems = [
+  { title: "Dashboard", url: "/intern/dashboard", icon: "dashboard" },
   { title: "Courses", url: "/intern/courses", icon: "menu_book" },
   { title: "Workshops", url: "/intern/workshops", icon: "precision_manufacturing" },
   { title: "Inventory", url: "/intern/inventory", icon: "inventory_2" },
