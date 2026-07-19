@@ -21,7 +21,7 @@ export default function StudentWorkshopsPage() {
   const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
   const [isMyRegistrationsOpen, setIsMyRegistrationsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"available" | "my-registrations">("available");
-
+  const [registering, setRegistering] = useState(false);
   useEffect(() => {
     Promise.all([
       api.workshops.list(),

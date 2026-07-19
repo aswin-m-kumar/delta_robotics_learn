@@ -30,8 +30,7 @@ export default function DashboardPage() {
         setEnrollments(enr);
         setWorkshops(ws);
         setInventoryItems(inv);
-      })
-      .finally(() => setLoading(false));
+      });
   }, []);
 
   const activeEnrollments = enrollments.filter(e => e.status === "active");
