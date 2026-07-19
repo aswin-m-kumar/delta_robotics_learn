@@ -22,7 +22,7 @@ import type {
   GalleryCreateRequest,
 } from "../types";
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api").replace(/\/+$/, "");
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "https://delta-backend-ohze.onrender.com/api").replace(/\/+$/, "");
 
 function getTokens(): { access: string | null; refresh: string | null } {
   if (typeof window === "undefined") return { access: null, refresh: null };
@@ -83,9 +83,9 @@ async function request<T>(
     }
   }
 
-  const body = await res.json().catch(() => ({ 
-    success: false, 
-    message: res.statusText || "An unexpected error occurred" 
+  const body = await res.json().catch(() => ({
+    success: false,
+    message: res.statusText || "An unexpected error occurred"
   }));
 
   if (!res.ok) {
@@ -124,7 +124,7 @@ async function attemptRefresh(): Promise<boolean> {
 
 export const api = {
   login(data: LoginRequest) {
-    return request<ApiResponse<LoginResponse>>("/accounts/login/", {
+    return request<LoginResponse>("/accounts/login/", {
       method: "POST",
       body: JSON.stringify(data),
     });

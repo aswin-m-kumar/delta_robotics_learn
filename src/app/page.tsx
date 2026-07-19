@@ -228,7 +228,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative w-full aspect-square min-h-[500px] md:min-h-[650px] flex flex-col items-center justify-center overflow-visible z-10">
+            <div className="relative mt-20 min-h-25 md:min-h-[650px] flex flex-col items-center justify-center overflow-visible z-10">
               <div className="absolute inset-0 w-full h-full pointer-events-none flex items-center justify-center z-0">
                 <div className="absolute w-full h-full max-w-[500px] max-h-[500px] flex items-center justify-center relative">
                   <div className="absolute w-[80%] h-[80%] animate-float-up">
