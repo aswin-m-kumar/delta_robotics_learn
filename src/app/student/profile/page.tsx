@@ -27,12 +27,14 @@ export default function StudentProfilePage() {
 
   useEffect(() => {
     if (user) {
-      setProfileData({
-        firstName: user.first_name || "",
-        lastName: user.last_name || "",
-        email: user.email || "",
-        phone: user.phone || "",
-        username: user.username || "",
+      Promise.resolve().then(() => {
+        setProfileData({
+          firstName: user.first_name || "",
+          lastName: user.last_name || "",
+          email: user.email || "",
+          phone: user.phone || "",
+          username: user.username || "",
+        });
       });
     }
   }, [user]);

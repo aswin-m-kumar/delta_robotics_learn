@@ -31,7 +31,6 @@ export default function EnrollPage() {
 
   useEffect(() => {
     if (!id) return;
-    setLoadingCourse(true);
     api.courses.get(id)
       .then((c) => setCourse(c))
       .catch((err) => setError(err.message || "Failed to load course"))
@@ -96,7 +95,7 @@ export default function EnrollPage() {
           </div>
           <h1 className="font-headline-lg text-headline-lg text-on-surface mb-2">Enrollment Submitted</h1>
           <p className="text-body-md text-on-surface-variant mb-4">
-            You're enrolled in <strong className="text-on-surface">{enrollment.course_title}</strong>.
+            You&apos;re enrolled in <strong className="text-on-surface">{enrollment.course_title}</strong>.
             Current status: <span className="font-semibold">{status.label}</span>.
           </p>
           <p className="text-label-sm text-on-surface-variant mb-6">Check your email for confirmation and next steps.</p>
@@ -124,7 +123,7 @@ export default function EnrollPage() {
         <div className="flex-1">
           <h1 className="font-headline-lg text-headline-lg text-on-surface mb-4">Enroll in {course.title}</h1>
           <p className="text-body-md text-on-surface-variant mb-8">
-            You're about to enroll in this course. Complete your enrollment below to get started.
+            You&apos;re about to enroll in this course. Complete your enrollment below to get started.
           </p>
 
           {error && (

@@ -13,7 +13,6 @@ export default function StudentDashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     Promise.all([
       api.enrollments.myEnrollments(),
       api.workshops.list(),

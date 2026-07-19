@@ -13,7 +13,6 @@ export default function WorkshopsPage() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     api.workshops.list()
       .then(setWorkshops)
       .catch(() => {})

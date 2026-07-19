@@ -24,8 +24,6 @@ export default function CourseCatalogPage() {
   const [activeLevel, setActiveLevel] = useState<CourseLevel | "all">("all");
 
   useEffect(() => {
-    setLoading(true);
-    setError("");
     api.courses.list()
       .then(setCourses)
       .catch((err) => setError(err.message || "Failed to load courses"))

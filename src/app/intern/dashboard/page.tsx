@@ -18,7 +18,7 @@ export default function DashboardPage() {
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
   const [workshops, setWorkshops] = useState<Workshop[]>([]);
   const [inventoryItems, setInventoryItems] = useState<InventoryItem[]>([]);
-  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     Promise.all([
@@ -65,7 +65,7 @@ export default function DashboardPage() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold text-on-surface">Dashboard</h2>
-          <p className="text-sm text-secondary mt-1">Welcome back. Here's what's happening today.</p>
+          <p className="text-sm text-secondary mt-1">Welcome back. Here&apos;s what&apos;s happening today.</p>
         </div>
         <div className="text-sm text-secondary bg-surface-container-low px-3 py-1.5 rounded-md border border-border">
           <span className="font-medium text-on-surface">Last synced:</span> Just now

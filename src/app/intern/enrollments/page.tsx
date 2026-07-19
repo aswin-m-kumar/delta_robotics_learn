@@ -18,7 +18,6 @@ export default function EnrollmentsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     api.enrollments.myEnrollments()
       .then(setEnrollments)
       .catch(() => {})
@@ -69,7 +68,7 @@ export default function EnrollmentsPage() {
             <tbody className="divide-y divide-border">
               {enrollments.map((enrollment) => {
                 const config = statusConfig[enrollment.status];
-                const StatusIcon = config.icon;
+
                 const isResolved = enrollment.status === "active" || enrollment.status === "rejected";
                 return (
                   <tr key={enrollment.id} className="hover:bg-surface-container-low transition-colors group">

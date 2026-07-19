@@ -21,11 +21,8 @@ export default function StudentWorkshopsPage() {
   const [isRegistrationDrawerOpen, setIsRegistrationDrawerOpen] = useState(false);
   const [isMyRegistrationsOpen, setIsMyRegistrationsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<"available" | "my-registrations">("available");
-  const [registering, setRegistering] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    setError("");
     Promise.all([
       api.workshops.list(),
       api.workshopRegistrations.myRegistrations(),
@@ -272,7 +269,8 @@ export default function StudentWorkshopsPage() {
             {registrations.length === 0 ? (
               <div className="text-center py-8">
                 <span className="material-symbols-outlined text-xl text-secondary mb-4">person_off</span>
-                <p className="text-center text-secondary">You haven't registered for any workshops yet.</p>
+                <h2 className="text-xl font-bold mb-2 text-on-surface">You&apos;re not registered!</h2>
+                <p className="text-center text-secondary">You haven&apos;t registered for any workshops yet.</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -558,6 +556,3 @@ export default function StudentWorkshopsPage() {
     </>
   );
 }
-
-// Helper type for status filter
-type Set<T> = React.Dispatch<React.SetStateAction<T>>;

@@ -1,3 +1,5 @@
+import type { Role } from "@/constants/auth";
+
 export interface User {
   id: string;
   username: string;
@@ -5,7 +7,7 @@ export interface User {
   first_name: string;
   last_name: string;
   phone: string;
-  role: "student" | "intern" | "admin";
+  role: Role;
   avatar_url: string;
   created_at: string;
 }
@@ -31,7 +33,7 @@ export interface RegisterRequest {
   first_name?: string;
   last_name?: string;
   phone?: string;
-  role?: "student" | "intern" | "admin";
+  role?: Role;
 }
 
 export interface LoginResponse {

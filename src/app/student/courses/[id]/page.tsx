@@ -44,8 +44,6 @@ export default function CourseDetailsPage() {
 
   useEffect(() => {
     if (!id) return;
-    setLoading(true);
-    setError("");
     api.courses.get(id)
       .then(setCourse)
       .catch((err) => setError(err.message || "Failed to load course"))

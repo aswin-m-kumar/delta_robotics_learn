@@ -6,8 +6,10 @@ import {
   useState,
   useEffect,
   useCallback,
+  useMemo,
   type ReactNode,
 } from "react";
+import { AUTH_KEYS } from "@/constants/auth";
 import { api, setTokens, clearTokens, getTokens } from "../lib/api";
 import type { User, RegisterRequest } from "../types";
 
@@ -36,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const { access, refresh } = getTokens();
     if (!access && !refresh) {
-      setIsLoading(false);
+      Promise.resolve().then(() => setIsLoading(false));
       return;
     }
 
@@ -51,7 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             return api.refreshToken(refresh).then((r) => {
               if (r.data) {
                 setTokens(r.data.access_token, r.data.refresh_token);
-                setCookie("access_token", r.data.access_token, 3600);
+                setCookie(AUTH_KEYS.ACCESS_TOKEN, r.data.access_token, 3600);
                 return api.verifyToken().then((v) => {
                   if (v.data?.user) setUser(v.data.user);
                 });
@@ -61,8 +63,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         })
         .catch(() => clearTokens())
         .finally(() => setIsLoading(false));
+    } else if (refresh) {
+      api.refreshToken(refresh).then((r) => {
+        if (r.data) {
+          setTokens(r.data.access_token, r.data.refresh_token);
+          setCookie(AUTH_KEYS.ACCESS_TOKEN, r.data.access_token, 3600);
+          return api.verifyToken().then((v) => {
+            if (v.data?.user) setUser(v.data.user);
+          });
+        }
+      })
+      .catch(() => clearTokens())
+      .finally(() => setIsLoading(false));
     } else {
-      setIsLoading(false);
+      Promise.resolve().then(() => setIsLoading(false));
     }
   }, []);
 
@@ -70,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const res = await api.login({ email, password });
     if (!res.success || !res.data) throw new Error(res.message || "Login failed");
     setTokens(res.data.access_token, res.data.refresh_token);
-    setCookie("access_token", res.data.access_token, 3600);
+    setCookie(AUTH_KEYS.ACCESS_TOKEN, res.data.access_token, 3600);
     setUser(res.data.user);
     return res.data.user;
   }, []);
@@ -79,7 +93,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const res = await api.register(data);
     if (!res.success || !res.data) throw new Error(res.message || "Registration failed");
     setTokens(res.data.access_token, res.data.refresh_token);
-    setCookie("access_token", res.data.access_token, 3600);
+    setCookie(AUTH_KEYS.ACCESS_TOKEN, res.data.access_token, 3600);
     setUser(res.data.user);
     return res.data.user;
   }, []);
@@ -91,12 +105,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Swallow — clear tokens regardless
     }
     clearTokens();
-    clearCookie("access_token");
+    clearCookie(AUTH_KEYS.ACCESS_TOKEN);
     setUser(null);
   }, []);
 
+  const contextValue = useMemo(
+    () => ({ user, isLoading, login, register, logout }),
+    [user, isLoading, login, register, logout]
+  );
+
   return (
-    <AuthContext.Provider value={{ user, isLoading, login, register, logout }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

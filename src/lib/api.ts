@@ -1,3 +1,4 @@
+import { AUTH_KEYS } from "@/constants/auth";
 import type {
   ApiResponse,
   LoginRequest,
@@ -26,19 +27,19 @@ const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api"
 function getTokens(): { access: string | null; refresh: string | null } {
   if (typeof window === "undefined") return { access: null, refresh: null };
   return {
-    access: localStorage.getItem("access_token"),
-    refresh: localStorage.getItem("refresh_token"),
+    access: localStorage.getItem(AUTH_KEYS.ACCESS_TOKEN),
+    refresh: localStorage.getItem(AUTH_KEYS.REFRESH_TOKEN),
   };
 }
 
 function setTokens(access: string, refresh: string) {
-  localStorage.setItem("access_token", access);
-  localStorage.setItem("refresh_token", refresh);
+  localStorage.setItem(AUTH_KEYS.ACCESS_TOKEN, access);
+  localStorage.setItem(AUTH_KEYS.REFRESH_TOKEN, refresh);
 }
 
 function clearTokens() {
-  localStorage.removeItem("access_token");
-  localStorage.removeItem("refresh_token");
+  localStorage.removeItem(AUTH_KEYS.ACCESS_TOKEN);
+  localStorage.removeItem(AUTH_KEYS.REFRESH_TOKEN);
 }
 
 class ApiError extends Error {
@@ -77,13 +78,17 @@ async function request<T>(
       const { access: newAccess } = getTokens();
       headers["Authorization"] = `Bearer ${newAccess}`;
       res = await fetch(url, { ...fetchOptions, headers });
+    } else {
+      clearTokens();
     }
   }
 
-  const body = await res.json().catch(() => ({ success: false, message: res.statusText }));
+  const body = await res.json().catch(() => ({ 
+    success: false, 
+    message: res.statusText || "An unexpected error occurred" 
+  }));
 
   if (!res.ok) {
-    clearTokens();
     throw new ApiError(res.status, body);
   }
 
@@ -115,14 +120,7 @@ async function attemptRefresh(): Promise<boolean> {
   }
 }
 
-function cleanAuthResponse(body: ApiResponse): ApiResponse {
-  if (!body.success && body.message) {
-    if (body.message.includes("Invalid token") || body.message.includes("not found")) {
-      clearTokens();
-    }
-  }
-  return body;
-}
+
 
 export const api = {
   login(data: LoginRequest) {

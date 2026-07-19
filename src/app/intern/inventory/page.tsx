@@ -17,7 +17,6 @@ export default function InventoryPage() {
   const [statusFilter, setStatusFilter] = useState('');
 
   useEffect(() => {
-    setLoading(true);
     api.inventory.list()
       .then(setInventory)
       .catch(() => {})
