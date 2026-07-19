@@ -11,6 +11,14 @@ import {
 import { api, setTokens, clearTokens, getTokens } from "./api";
 import type { User, RegisterRequest } from "./types";
 
+function setCookie(name: string, value: string, maxAgeSeconds: number) {
+  document.cookie = `${name}=${value}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax`;
+}
+
+function clearCookie(name: string) {
+  document.cookie = `${name}=; path=/; max-age=0; SameSite=Lax`;
+}
+
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
@@ -43,6 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             return api.refreshToken(refresh).then((r) => {
               if (r.data) {
                 setTokens(r.data.access_token, r.data.refresh_token);
+                setCookie("access_token", r.data.access_token, 3600);
                 return api.verifyToken().then((v) => {
                   if (v.data?.user) setUser(v.data.user);
                 });
@@ -61,6 +70,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const res = await api.login({ email, password });
     if (!res.success || !res.data) throw new Error(res.message || "Login failed");
     setTokens(res.data.access_token, res.data.refresh_token);
+    setCookie("access_token", res.data.access_token, 3600);
     setUser(res.data.user);
     return res.data.user;
   }, []);
@@ -69,6 +79,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const res = await api.register(data);
     if (!res.success || !res.data) throw new Error(res.message || "Registration failed");
     setTokens(res.data.access_token, res.data.refresh_token);
+    setCookie("access_token", res.data.access_token, 3600);
     setUser(res.data.user);
     return res.data.user;
   }, []);
@@ -80,6 +91,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Swallow — clear tokens regardless
     }
     clearTokens();
+    clearCookie("access_token");
     setUser(null);
   }, []);
 
