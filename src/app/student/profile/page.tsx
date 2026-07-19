@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import { useAuth } from "@/lib/auth-context";
+import { useAuth } from "@/providers/auth-provider";
 
 export default function StudentProfilePage() {
   const { user } = useAuth();

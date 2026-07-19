@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { api } from "@/lib/api";
-import type { Course, Enrollment, EnrollmentStatus } from "@/lib/types";
+import type { Course, Enrollment, EnrollmentStatus } from "@/types";
 
 const levelLabels: Record<string, string> = {
   school: "School",

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { Workshop, WorkshopRegistration, WorkshopStatus, WorkshopCreateRequest } from "@/lib/types";
+import type { Workshop, WorkshopRegistration, WorkshopStatus, WorkshopCreateRequest } from "@/types";
 
 export default function WorkshopsPage() {
   const [workshops, setWorkshops] = useState<Workshop[]>([]);

@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { CheckCircle2, Clock, DollarSign, UserCheck, Ban } from "lucide-react";
 import { api } from "@/lib/api";
-import type { Enrollment, EnrollmentStatus } from "@/lib/types";
+import type { Enrollment, EnrollmentStatus } from "@/types";
 
 const statusConfig: Record<EnrollmentStatus, { label: string; className: string; bgClassName: string; dotClassName: string; icon: typeof Clock }> = {
   pending_payment: { label: "Pending Payment", className: "text-amber-700", bgClassName: "bg-amber-100", dotClassName: "bg-amber-500", icon: Clock },

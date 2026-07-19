@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { Course, GalleryImage } from "@/lib/types";
+import type { Course, GalleryImage } from "@/types";
 
 const fallbackCourses = [
   {

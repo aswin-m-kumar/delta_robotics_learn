@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
-import type { Course, CourseLevel } from "@/lib/types";
+import type { Course, CourseLevel } from "@/types";
 
 const levels: { value: CourseLevel | "all"; label: string }[] = [
   { value: "all", label: "All" },

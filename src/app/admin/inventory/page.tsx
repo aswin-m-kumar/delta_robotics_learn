@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { InventoryItem, InventoryLog, InventoryCreateRequest } from "@/lib/types";
+import type { InventoryItem, InventoryLog, InventoryCreateRequest } from "@/types";
 
 export default function InventoryPage() {
   const [items, setItems] = useState<InventoryItem[]>([]);

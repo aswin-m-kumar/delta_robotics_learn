@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { Enrollment } from "@/lib/types";
+import type { Enrollment } from "@/types";
 
 export default function StudentsPage() {
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);

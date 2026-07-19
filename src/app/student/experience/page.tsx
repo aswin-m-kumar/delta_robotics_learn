@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
-import type { Course } from "@/lib/types";
+import type { Course } from "@/types";
 
 export default function StudentExperiencePage() {
   const [formData, setFormData] = useState({

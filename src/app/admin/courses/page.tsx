@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { Course, CourseLevel, CourseCreateRequest } from "@/lib/types";
+import type { Course, CourseLevel, CourseCreateRequest } from "@/types";
 
 export default function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);

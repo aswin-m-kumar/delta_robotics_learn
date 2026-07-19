@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { Course, Enrollment } from "@/lib/types";
+import type { Course, Enrollment } from "@/types";
 
 export default function ReportsPage() {
   const [courses, setCourses] = useState<Course[]>([]);

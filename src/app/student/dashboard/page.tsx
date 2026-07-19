@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
-import { useAuth } from "@/lib/auth-context";
-import type { Enrollment, Workshop } from "@/lib/types";
+import { useAuth } from "@/providers/auth-provider";
+import type { Enrollment, Workshop } from "@/types";
 
 export default function StudentDashboardPage() {
   const { user } = useAuth();

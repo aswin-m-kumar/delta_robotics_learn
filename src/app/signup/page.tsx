@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "@/lib/auth-context";
+import { useAuth } from "@/providers/auth-provider";
 
 const roles = [
   { id: "student", label: "Student", icon: "school" },

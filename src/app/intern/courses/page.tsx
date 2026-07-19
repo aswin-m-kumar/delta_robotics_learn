@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Search, MoreVertical, Clock, CalendarDays, Image as ImageIcon } from 'lucide-react';
 import { api } from '@/lib/api';
-import type { Course } from '@/lib/types';
-import Drawer from '@/components/intern/Drawer';
+import type { Course } from '@/types';
+import Drawer from '@/components/shared/Drawer';
 
 export default function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);

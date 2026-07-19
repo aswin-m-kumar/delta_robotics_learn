@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { GalleryImage, GalleryCreateRequest, Workshop } from "@/lib/types";
+import type { GalleryImage, GalleryCreateRequest, Workshop } from "@/types";
 
 export default function GalleryPage() {
   const [images, setImages] = useState<GalleryImage[]>([]);

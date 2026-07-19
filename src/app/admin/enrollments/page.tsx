@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle2, XCircle, Clock, DollarSign, UserCheck, Ban } from "lucide-react";
-import type { Enrollment, EnrollmentStatus } from "@/lib/types";
+import type { Enrollment, EnrollmentStatus } from "@/types";
 
 const statusConfig: Record<EnrollmentStatus, { label: string; variant: "default" | "outline" | "destructive" | "secondary"; className: string; icon: typeof Clock }> = {
   pending_payment: { label: "Pending Payment", variant: "outline", className: "text-amber-600 border-amber-200 bg-amber-50", icon: Clock },

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { Enrollment, Workshop, InventoryItem } from "@/lib/types";
+import type { Enrollment, Workshop, InventoryItem } from "@/types";
 
 export default function AdminDashboardPage() {
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);

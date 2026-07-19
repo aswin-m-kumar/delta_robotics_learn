@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useAuth } from "@/lib/auth-context";
+import { useAuth } from "@/providers/auth-provider";
 
 const internNavItems = [
   { title: "Dashboard", url: "/intern/dashboard", icon: "dashboard" },

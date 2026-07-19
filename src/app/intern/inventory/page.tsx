@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Download, Plus, RotateCcw, Edit2, Image as ImageIcon, Minus, Filter } from 'lucide-react';
 import { api } from '@/lib/api';
-import type { InventoryItem } from '@/lib/types';
-import Drawer from '@/components/intern/Drawer';
+import type { InventoryItem } from '@/types';
+import Drawer from '@/components/shared/Drawer';
 
 export default function InventoryPage() {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);

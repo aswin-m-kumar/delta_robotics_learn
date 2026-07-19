@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 // Import types from lib/types
-import type { Workshop, WorkshopRegistration, WorkshopStatus } from "@/lib/types";
+import type { Workshop, WorkshopRegistration, WorkshopStatus } from "@/types";
 import { api } from "@/lib/api";
-import { useAuth } from "@/lib/auth-context";
+import { useAuth } from "@/providers/auth-provider";
 
 export default function StudentWorkshopsPage() {
   const { user } = useAuth();

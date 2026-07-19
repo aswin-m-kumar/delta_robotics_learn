@@ -8,8 +8,8 @@ import {
   useCallback,
   type ReactNode,
 } from "react";
-import { api, setTokens, clearTokens, getTokens } from "./api";
-import type { User, RegisterRequest } from "./types";
+import { api, setTokens, clearTokens, getTokens } from "../lib/api";
+import type { User, RegisterRequest } from "../types";
 
 function setCookie(name: string, value: string, maxAgeSeconds: number) {
   document.cookie = `${name}=${value}; path=/; max-age=${maxAgeSeconds}; SameSite=Lax`;

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { api } from "@/lib/api";
-import { useAuth } from "@/lib/auth-context";
-import type { Course } from "@/lib/types";
+import { useAuth } from "@/providers/auth-provider";
+import type { Course } from "@/types";
 
 const levelStyles: Record<string, { color: string; badge: string }> = {
   school: { color: "text-green-600 bg-green-50", badge: "School" },

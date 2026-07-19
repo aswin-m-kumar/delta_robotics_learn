@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { Calendar, MapPin, Image as ImageIcon, Plus } from 'lucide-react';
 import { api } from '@/lib/api';
-import type { Workshop } from '@/lib/types';
-import Drawer from '@/components/intern/Drawer';
+import type { Workshop } from '@/types';
+import Drawer from '@/components/shared/Drawer';
 
 export default function WorkshopsPage() {
   const [workshops, setWorkshops] = useState<Workshop[]>([]);

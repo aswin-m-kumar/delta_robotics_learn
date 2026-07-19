@@ -12,7 +12,7 @@ import {
   User
 } from 'lucide-react';
 import { api } from '@/lib/api';
-import type { Enrollment, Workshop, InventoryItem } from '@/lib/types';
+import type { Enrollment, Workshop, InventoryItem } from '@/types';
 
 export default function DashboardPage() {
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);

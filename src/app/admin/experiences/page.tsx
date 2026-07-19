@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { api } from "@/lib/api";
-import type { Announcement, Course } from "@/lib/types";
+import type { Announcement, Course } from "@/types";
 
 export default function ExperiencesPage() {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);

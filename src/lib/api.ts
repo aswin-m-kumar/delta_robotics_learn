@@ -19,7 +19,7 @@ import type {
   WorkshopRegistration,
   GalleryImage,
   GalleryCreateRequest,
-} from "./types";
+} from "../types";
 
 const API_BASE = (process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api").replace(/\/+$/, "");
 
@@ -147,7 +147,7 @@ export const api = {
   },
 
   verifyToken() {
-    return request<ApiResponse<{ user: import("./types").User }>>("/accounts/verify-token/", {
+    return request<ApiResponse<{ user: import("../types").User }>>("/accounts/verify-token/", {
       auth: true,
     });
   },
