@@ -16,7 +16,6 @@ export default function CoursesPage() {
   const [difficultyFilter, setDifficultyFilter] = useState('');
 
   useEffect(() => {
-    setLoading(true);
     api.courses.list()
       .then(setCourses)
       .catch(() => {})

@@ -81,7 +81,7 @@ export default function AdminDashboardPage() {
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h2 className="font-headline-lg text-headline-lg text-on-surface">Dashboard</h2>
-          <p className="text-secondary mt-1">Welcome back. Here's what's happening today.</p>
+          <p className="text-secondary mt-1">Welcome back. Here&apos;s what&apos;s happening today.</p>
         </div>
         <div className="text-sm text-secondary bg-surface-container-low px-3 py-1.5 rounded-md border border-border">
           <span className="font-medium text-on-surface">Last synced:</span> Just now
