@@ -413,7 +413,7 @@ export default function HomePage() {
         </main>
 
         <footer className="w-full bg-surface-container-low border-t border-outline-variant">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto px-10 py-20">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-7xl mx-auto px-10 py-10">
             <div className="col-span-1 md:col-span-2 flex flex-col gap-3">
               <span className="font-headline-md text-headline-md font-bold text-primary mb-4 block">Delta Robotics</span>
               <p className="font-body-md text-body-md text-on-surface-variant max-w-sm">
@@ -424,7 +424,6 @@ export default function HomePage() {
               </p>
             </div>
             <div className="flex flex-col gap-3">
-              <h4 className="font-headline-sm text-headline-sm text-primary mb-2">Navigation</h4>
               <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 duration-200 block w-fit" href="#about">About</a>
               <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 duration-200 block w-fit" href="#courses">Courses</a>
               <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 duration-200 block w-fit" href="#workshops">Workshops</a>
@@ -432,7 +431,6 @@ export default function HomePage() {
               <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 duration-200 block w-fit" href="#contact">Contact</a>
             </div>
             <div className="flex flex-col gap-3">
-              <h4 className="font-headline-sm text-headline-sm text-primary mb-2">Legal</h4>
               <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 duration-200 block w-fit" href="#">Privacy Policy</a>
               <a className="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 duration-200 block w-fit" href="#">Terms of Service</a>
             </div>
